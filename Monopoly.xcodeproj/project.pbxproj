@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3C55B86020C57C7C00427D5E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B85F20C57C7C00427D5E /* main.swift */; };
+		3C55B86920C57C9900427D5E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B86820C57C9900427D5E /* Game.swift */; };
+		3C55B86B20C57D0700427D5E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B86A20C57D0700427D5E /* Player.swift */; };
+		3C55B86D20C57D5800427D5E /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B86C20C57D5800427D5E /* Die.swift */; };
+		3C55B86F20C57EF600427D5E /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B86E20C57EF600427D5E /* Board.swift */; };
+		3C55B87120C57F0200427D5E /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B87020C57F0200427D5E /* Square.swift */; };
+		3C55B87320C586F600427D5E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B87220C586F600427D5E /* Piece.swift */; };
+		3C55B87520C58FE500427D5E /* PlayerQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C55B87420C58FE500427D5E /* PlayerQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		3C55B85C20C57C7C00427D5E /* Monopoly */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Monopoly; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C55B85F20C57C7C00427D5E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		3C55B86820C57C9900427D5E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3C55B86A20C57D0700427D5E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3C55B86C20C57D5800427D5E /* Die.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
+		3C55B86E20C57EF600427D5E /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		3C55B87020C57F0200427D5E /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		3C55B87220C586F600427D5E /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		3C55B87420C58FE500427D5E /* PlayerQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				3C55B85F20C57C7C00427D5E /* main.swift */,
+				3C55B86820C57C9900427D5E /* Game.swift */,
+				3C55B87420C58FE500427D5E /* PlayerQueue.swift */,
+				3C55B86A20C57D0700427D5E /* Player.swift */,
+				3C55B87220C586F600427D5E /* Piece.swift */,
+				3C55B86C20C57D5800427D5E /* Die.swift */,
+				3C55B86E20C57EF600427D5E /* Board.swift */,
+				3C55B87020C57F0200427D5E /* Square.swift */,
 			);
 			path = Monopoly;
 			sourceTree = "<group>";
@@ -119,7 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C55B87120C57F0200427D5E /* Square.swift in Sources */,
+				3C55B87320C586F600427D5E /* Piece.swift in Sources */,
 				3C55B86020C57C7C00427D5E /* main.swift in Sources */,
+				3C55B87520C58FE500427D5E /* PlayerQueue.swift in Sources */,
+				3C55B86B20C57D0700427D5E /* Player.swift in Sources */,
+				3C55B86F20C57EF600427D5E /* Board.swift in Sources */,
+				3C55B86D20C57D5800427D5E /* Die.swift in Sources */,
+				3C55B86920C57C9900427D5E /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

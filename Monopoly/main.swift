@@ -8,5 +8,7 @@
 
 import Foundation
 
-print("Hello, World!")
+for _ in 0...10 {
+    print(arc4random_uniform(6))
+}
 
