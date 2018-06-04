@@ -11,23 +11,22 @@ import Foundation
 /// Represents a player in the Monopoly game. 
 class Player {
     let identifier: UInt8
+    let name: String
     var piece: Piece?
     
-    private(set) var name: String {
-        get {
-            return "Player " + String(identifier)
-        }
-        set {
-        }
+    convenience init(id: UInt8) {
+        self.init(id: id, piece: nil)
     }
-    
 
-    init(id: UInt8) {
-        self.identifier = id
+    convenience init(id: UInt8, piece: Piece?) {
+        self.init(id: id, name: "Player " + String(id), piece: piece)
     }
     
-//    init(name: String) {
-//    }
+    init(id: UInt8, name: String, piece: Piece?) {
+        self.identifier = id
+        self.name = name
+        self.piece = piece
+    }
     
     func move(offset: Int8) {
         piece?.move()
