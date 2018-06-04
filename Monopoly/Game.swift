@@ -39,12 +39,18 @@ class Game {
         self.setUpPieces()
         
         // Setup players and their pieces
+        // TODO: Currently the player 1 has piece 1, player 2 has piece 2, and ... . This can later be changed to consider the player's choice.
         for index in 1...numberOfPlayers {
             players.append(Player(id: UInt8(index), piece: pieces[index]))
         }
         
         // Setting the players turn
-    
+        // TODO: Currently the players are added to the queue based on their index. Later it can be changed to determine the turns based on the dice face values.
+        // Also, note that there are two copies of the same players array; i.e. `PlayerQueue` is useless and we can directly use the `players` array. But I prefer to write the `playRound()` method based on the `PlayerQueue`, so as there is no need to change it later.
+        // The `PlayerQueue` can be optimized by using `ArraySlice`.
+        for player in players {
+            playersQueue.push(player: player)
+        }
     }
     
     func playRound() {
