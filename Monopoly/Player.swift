@@ -12,7 +12,7 @@ import Foundation
 class Player {
     let identifier: UInt8
     let name: String
-    var piece: Piece?
+    var piece: Piece? // This allows a player to be created without a piece, waiting for a chosen piece in later stages.
     
     convenience init(id: UInt8) {
         self.init(id: id, piece: nil)

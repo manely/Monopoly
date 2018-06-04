@@ -24,6 +24,10 @@ class Board {
     }
     
     func offset(square: inout Square, by offsetValue: Int) {
+        square = self.offset(square: square, by: offsetValue)
+    }
+    
+    func offset(square: Square, by offsetValue: Int) -> Square {
         var newIndex = square.identifier + offsetValue
         if newIndex >= 40 {
             newIndex -= 40
@@ -31,7 +35,7 @@ class Board {
         if newIndex < 0 {
             newIndex += 40
         }
-        square = squares[newIndex]
+        return squares[newIndex]
     }
 }
 

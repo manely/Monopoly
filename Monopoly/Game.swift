@@ -13,7 +13,7 @@ class Game {
     let board = Board()
     let dice = Dice()
     let numberOfPlayers: Int
-    var pieces = [Piece]()
+    var pieces = [Piece]() // TODO: May be better to be removed from this class, and managed by AppDelegate or the one that owns the Game.
     var players = [Player]()
     var currentPlayer: Player?
     

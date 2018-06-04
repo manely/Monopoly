@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Piece {
+class Piece: Equatable {
     let identifier: UInt8
     let name: String
     weak var square: Square?
@@ -23,6 +23,18 @@ class Piece {
     }
     
     func move(offset offsetValue: Int) {
+        self.square?.remove(piece: self)
         self.square?.board?.offset(square: &square!, by: offsetValue)
+        self.square?.place(piece: self)
+    }
+    
+    func placeOn(square: Square) {
+        self.square?.remove(piece: self)
+        self.square = square
+        self.square?.place(piece: self)
+    }
+    
+    static func == (lhs: Piece, rhs: Piece) -> Bool {
+        return lhs.identifier == rhs.identifier && lhs.name == rhs.name
     }
 }
