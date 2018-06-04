@@ -25,6 +25,9 @@ class Die {
     }
 }
 
+/// Simplifies the dice rolling by aggregating two Die instances.
+///
+/// Instead of rolling two separate dice, the `Game` classes uses the `Dice` class to simply roll the two dice and reading the sums of face values.
 class Dice {
     let die1 = Die()
     let die2 = Die()

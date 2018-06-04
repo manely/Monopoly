@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represents a square and used to model the squares around the board game. 
 class Square {
     var identifier: UInt8 = 0
     var title: String {

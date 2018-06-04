@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A simple queue structure for holding players according to their turn.
 class PlayerQueue {
     var elements: [Player] = [] // To make a better performance, we can use an array slice
     

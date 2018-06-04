@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represents a player in the Monopoly game. 
 class Player {
     let identifier: UInt8
     var piece: Piece?
@@ -29,5 +30,6 @@ class Player {
 //    }
     
     func move(offset: Int8) {
+        piece?.move()
     }
 }

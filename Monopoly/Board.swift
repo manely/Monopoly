@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// The Monopoly board which contains 40 squares, each represented by an instance of the `Square` class.
 class Board {
     var squares = [Square]()
     

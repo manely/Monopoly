@@ -9,10 +9,16 @@
 import Foundation
 
 class Piece {
+    let identifier: UInt8
     let name: String
     weak var square: Square?
     
-    init(name: String) {
+    convenience init(id: UInt8) {
+        self.init(id: id, name: "Piece " + String(id))
+    }
+    
+    init(id: UInt8, name: String) {
+        self.identifier = id
         self.name = name
     }
     
