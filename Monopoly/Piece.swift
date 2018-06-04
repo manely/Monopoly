@@ -23,9 +23,10 @@ class Piece: Equatable {
     }
     
     func move(offset offsetValue: Int) {
-        self.square?.remove(piece: self)
-        self.square?.board?.offset(square: &square!, by: offsetValue)
-        self.square?.place(piece: self)
+        if let _ = self.square {
+            let sq = self.square?.board?.offset(square: self.square!, by: offsetValue)
+            self.placeOn(square: sq!)
+        }
     }
     
     func placeOn(square: Square) {
