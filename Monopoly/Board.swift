@@ -11,11 +11,7 @@ import Foundation
 /// The Monopoly board which contains 40 squares, each represented by an instance of the `Square` class.
 class Board {
     var squares = [Square]()
-    
-    init() {
-        self.setUp()
-    }
-    
+        
     func setUp() {
         for index in 0...39 {
             squares.append(Square(id: UInt8(index)))

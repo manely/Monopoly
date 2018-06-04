@@ -41,7 +41,7 @@ class Game {
         // Setup players and their pieces
         // TODO: Currently the player 1 has piece 1, player 2 has piece 2, and ... . This can later be changed to consider the player's choice.
         for index in 1...numberOfPlayers {
-            players.append(Player(id: UInt8(index), piece: pieces[index]))
+            players.append(Player(id: UInt8(index), piece: pieces[index - 1]))
         }
         
         // Setting the players turn
