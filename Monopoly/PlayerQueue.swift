@@ -12,6 +12,19 @@ import Foundation
 class PlayerQueue {
     var elements: [Player] = [] // To make a better performance, we can use an array slice
     
+    var first: Player? {
+        assert(!elements.isEmpty, "The PlayerQueue is empty")
+        return elements.first
+    }
+    
+    var empty: Bool {
+        return elements.isEmpty
+    }
+    
+    var count: Int {
+        return elements.count
+    }
+    
     func push(player: Player) {
         elements.append(player)
     }
@@ -21,16 +34,4 @@ class PlayerQueue {
         return elements.removeFirst()
     }
     
-    func first() -> Player? {
-        assert(!elements.isEmpty, "The PlayerQueue is empty")
-        return elements.first
-    }
-    
-    func empty() -> Bool {
-        return elements.isEmpty
-    }
-    
-    func count() -> Int {
-        return elements.count
-    }
 }
