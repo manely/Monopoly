@@ -47,6 +47,12 @@ class Game {
         // Setting the players turn
         // TODO: The following line just fills the players queue. It has nothing to do with determining the order of playing for each player.
         fillPlayersQueue()
+        
+        // Put each playes piece on the Go square
+        // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!
+        for player in players {
+            player.piece?.square = board.squares[0]
+        }
     }
     
     func playRound() {
