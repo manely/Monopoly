@@ -52,7 +52,7 @@ class Game {
         // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!
         // FIXME: Instead of accessing special squares (such as GO) by index, it is better to define an enum for special squares.
         for player in players {
-            player.piece?.square = board.square(at: 0)
+            player.piece?.placeOn(square: board.square(at: 0))
         }
     }
     
