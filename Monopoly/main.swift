@@ -8,7 +8,6 @@
 
 import Foundation
 
-for _ in 0...10 {
-    print(arc4random_uniform(6))
-}
-
+var game = Game(numberOfPlayers: 2)
+game.setUp()
+game.playRound()

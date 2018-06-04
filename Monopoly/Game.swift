@@ -45,27 +45,38 @@ class Game {
         }
         
         // Setting the players turn
-        // TODO: Currently the players are added to the queue based on their index. Later it can be changed to determine the turns based on the dice face values.
-        // Also, note that there are two copies of the same players array; i.e. `PlayerQueue` is useless and we can directly use the `players` array. But I prefer to write the `playRound()` method based on the `PlayerQueue`, so as there is no need to change it later.
-        // The `PlayerQueue` can be optimized by using `ArraySlice`.
-        for player in players {
-            playersQueue.push(player: player)
-        }
+        // TODO: The following line just fills the players queue. It has nothing to do with determining the order of playing for each player.
+        fillPlayersQueue()
     }
     
     func playRound() {
-        // Take a player as the current player
+        for _ in 1...numberOfPlayers {
+            // Take a player as the current player
+            currentPlayer = playersQueue.pop()
+            
+            // Roll the dice
+            dice.roll()
+            
+            // Move the player as the sum of dice face value
+            currentPlayer?.move(offset: Int8(dice.faceValue))
+        }
         
-        // Roll the dice
-        dice.roll()
-        
-        // Move the player as the sum of dice face value
-        currentPlayer?.move(offset: Int8(dice.faceValue))
+        // TODO: The current design using `PlayerQueue` enforces to fill the queue after or before each round, as we need to pop the player from queue. We can use a circular data structure to remove this need, e.g. a circular linked-list.
+        fillPlayersQueue()
     }
     
     private func setUpPieces() {
         for index in 0...7 {
             pieces.append(Piece(id: UInt8(index + 1)))
+        }
+    }
+    
+    private func fillPlayersQueue() {
+        // TODO: Currently the players are added to the queue based on their index. Later it can be changed to determine the turns based on the dice face values.
+        // Also, note that there are two copies of the same players array; i.e. `PlayerQueue` is useless and we can directly use the `players` array. But I prefer to write the `playRound()` method based on the `PlayerQueue`, so as there is no need to change it later.
+        // The `PlayerQueue` can be optimized by using `ArraySlice`.
+        for player in players {
+            playersQueue.push(player: player)
         }
     }
 }
