@@ -10,12 +10,15 @@ import Foundation
 
 /// Represents a square and used to model the squares around the board game. 
 class Square {
-    var identifier: UInt8 = 0
+    var identifier: Int = 0
+    weak var board: Board?
+    
     var title: String {
         return "Square " + String(self.identifier)
     }
     
-    init(id: UInt8) {
+    init(id: Int, board: Board) {
         self.identifier = id
+        self.board = board
     }
 }

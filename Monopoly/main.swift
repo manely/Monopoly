@@ -10,4 +10,4 @@ import Foundation
 
 var game = Game(numberOfPlayers: 2)
 game.setUp()
-game.playRound()
+game.play()

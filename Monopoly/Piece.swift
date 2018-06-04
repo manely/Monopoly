@@ -22,6 +22,7 @@ class Piece {
         self.name = name
     }
     
-    func move() {
+    func move(offset offsetValue: Int) {
+        self.square?.board?.offset(square: &square!, by: offsetValue)
     }
 }

@@ -46,13 +46,20 @@ class Game {
         
         // Setting the players turn
         // TODO: The following line just fills the players queue. It has nothing to do with determining the order of playing for each player.
-        fillPlayersQueue()
+//        fillPlayersQueue()
         
         // Put each playes piece on the Go square
         // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!
+        // FIXME: Instead of accessing special squares (such as GO) by index, it is better to define an enum for special squares.
         for player in players {
-            player.piece?.square = board.squares[0]
+            player.piece?.square = board.square(at: 0)
         }
+    }
+    
+    func play() {
+        // FIXME: Currently only a single round is played. This should be altered to play as many rounds as needed until a time period is passed, or a player wins.
+        self.fillPlayersQueue()
+        self.playRound()
     }
     
     func playRound() {
@@ -64,7 +71,7 @@ class Game {
             dice.roll()
             
             // Move the player as the sum of dice face value
-            currentPlayer?.move(offset: Int8(dice.faceValue))
+            currentPlayer?.movePiece(offset: dice.totalFaceValue)
         }
         
         // TODO: The current design using `PlayerQueue` enforces to fill the queue after or before each round, as we need to pop the player from queue. We can use a circular data structure to remove this need, e.g. a circular linked-list.

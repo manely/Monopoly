@@ -10,12 +10,28 @@ import Foundation
 
 /// The Monopoly board which contains 40 squares, each represented by an instance of the `Square` class.
 class Board {
-    var squares = [Square]()
+    private var squares = [Square]()
         
     func setUp() {
         for index in 0...39 {
-            squares.append(Square(id: UInt8(index)))
+            squares.append(Square(id: index, board: self))
         }
+    }
+    
+    func square(at index: Int) -> Square {
+        assert(index >= 0 && index < 40, "Board.square(at: \(index)), index must be in 0..<40")
+        return squares[index]
+    }
+    
+    func offset(square: inout Square, by offsetValue: Int) {
+        var newIndex = square.identifier + offsetValue
+        if newIndex >= 40 {
+            newIndex -= 40
+        }
+        if newIndex < 0 {
+            newIndex += 40
+        }
+        square = squares[newIndex]
     }
 }
 

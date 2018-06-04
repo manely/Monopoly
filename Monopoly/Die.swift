@@ -32,8 +32,8 @@ class Dice {
     let die1 = Die()
     let die2 = Die()
 
-    var faceValue: UInt8 {
-        return die1.faceValue + die2.faceValue
+    var totalFaceValue: Int {
+        return Int(die1.faceValue + die2.faceValue)
     }
     
     func roll() {

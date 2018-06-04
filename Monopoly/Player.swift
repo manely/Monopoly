@@ -28,7 +28,7 @@ class Player {
         self.piece = piece
     }
     
-    func move(offset: Int8) {
-        piece?.move()
+    func movePiece(offset value: Int) {
+        piece?.move(offset: value)
     }
 }
