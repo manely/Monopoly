@@ -29,6 +29,8 @@ class Player {
     }
     
     func movePiece(offset value: Int) {
+        print("\(self.name) is moving from \(String(describing: self.piece?.square?.title))")
         piece?.move(offset: value)
+        print("\(self.name) has moved to \(String(describing: self.piece?.square?.title))")
     }
 }
