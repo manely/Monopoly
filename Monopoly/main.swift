@@ -8,6 +8,6 @@
 
 import Foundation
 
-var game = Game(numberOfPlayers: 2)
+var game = Game(numberOfPlayers: 2, numberOfRounds: 10)
 game.setUp()
 game.play()

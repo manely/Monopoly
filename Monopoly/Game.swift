@@ -81,7 +81,7 @@ class Game {
             dice.roll()
             
             // Move the player as the sum of dice face value
-            currentPlayer?.movePiece(offset: dice.totalFaceValue)
+            currentPlayer?.takeTurn(moveOffset: dice.totalFaceValue)
         }
         
         // TODO: The current design using `PlayerQueue` enforces to fill the queue after or before each round, as we need to pop the player from queue. We can use a circular data structure to remove this need, e.g. a circular linked-list.
