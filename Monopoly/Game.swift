@@ -16,15 +16,22 @@ class Game {
     var pieces = [Piece]() // TODO: May be better to be removed from this class, and managed by AppDelegate or the one that owns the Game.
     var players = [Player]()
     var currentPlayer: Player?
+    var currentRound = 0
+    let numberOfRounds: Int
     
     /// A `PlayerQueue` to manage the player turns, one after the other.
     ///
     /// This should be initialized after player turns is specified, e.g. by rolling the dice and based on the largest face value.
     var playersQueue = PlayerQueue()
     
-    init(numberOfPlayers: Int) {
+    convenience init(numberOfPlayers: Int) {
+        self.init(numberOfPlayers: numberOfPlayers, numberOfRounds: 1)
+    }
+    
+    init(numberOfPlayers: Int, numberOfRounds: Int) {
         assert(numberOfPlayers >= 2 && numberOfPlayers <= 8, "Game.init(\(numberOfPlayers)), numberOfPlayers should be between 2 and 8")
         self.numberOfPlayers = numberOfPlayers
+        self.numberOfRounds = numberOfRounds
     }
     
     /// Sets up the game by initializing players, and the board. Player turns must be set after setting up the game.
@@ -59,7 +66,10 @@ class Game {
     func play() {
         // FIXME: Currently only a single round is played. This should be altered to play as many rounds as needed until a time period is passed, or a player wins.
         self.fillPlayersQueue()
-        self.playRound()
+        for i in 1...numberOfRounds {
+            currentRound = i
+            self.playRound()
+        }
     }
     
     func playRound() {
