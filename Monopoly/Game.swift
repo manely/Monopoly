@@ -13,7 +13,6 @@ class Game {
     let board = Board()
     let dice = Dice()
     let numberOfPlayers: Int
-    var pieces = [Piece]() // TODO: May be better to be removed from this class, and managed by AppDelegate or the one that owns the Game.
     var players = [Player]()
     var currentPlayer: Player?
     var currentRound = 0
@@ -42,13 +41,10 @@ class Game {
         // Setup the board
         board.setUp()
         
-        // Setup the pieces
-        self.setUpPieces()
-        
         // Setup players and their pieces
         // TODO: Currently the player 1 has piece 1, player 2 has piece 2, and ... . This can later be changed to consider the player's choice.
         for index in 1...numberOfPlayers {
-            players.append(Player(id: UInt8(index), piece: pieces[index - 1]))
+            players.append(Player(id: UInt8(index)))
         }
         
         // Setting the players turn
@@ -59,7 +55,7 @@ class Game {
         // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!
         // FIXME: Instead of accessing special squares (such as GO) by index, it is better to define an enum for special squares.
         for player in players {
-            player.piece?.placeOn(square: board.square(at: 0))
+            player.piece.placeOn(square: board.square(at: 0))
         }
     }
     
@@ -86,12 +82,6 @@ class Game {
         
         // TODO: The current design using `PlayerQueue` enforces to fill the queue after or before each round, as we need to pop the player from queue. We can use a circular data structure to remove this need, e.g. a circular linked-list.
         fillPlayersQueue()
-    }
-    
-    private func setUpPieces() {
-        for index in 0...7 {
-            pieces.append(Piece(id: UInt8(index + 1)))
-        }
     }
     
     private func fillPlayersQueue() {

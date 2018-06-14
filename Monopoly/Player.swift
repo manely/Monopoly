@@ -10,27 +10,25 @@ import Foundation
 
 /// Represents a player in the Monopoly game. 
 class Player {
+    var piece: Piece
     let identifier: UInt8
     let name: String
     var piece: Piece? // This allows a player to be created without a piece, waiting for a chosen piece in later stages.
     
     convenience init(id: UInt8) {
-        self.init(id: id, piece: nil)
+        self.init(id: id, name: "Player " + String(id))
     }
 
-    convenience init(id: UInt8, piece: Piece?) {
-        self.init(id: id, name: "Player " + String(id), piece: piece)
-    }
-    
-    init(id: UInt8, name: String, piece: Piece?) {
+    init(id: UInt8, name: String) {
+        self.piece = Piece(id: id, name: name)
         self.identifier = id
         self.name = name
         self.piece = piece
     }
     
     func takeTurn(moveOffset value: Int) {
-        print("\(self.name) is moving from \(String(describing: self.piece?.square?.title))")
-        piece?.move(offset: value)
-        print("\(self.name) has moved to \(String(describing: self.piece?.square?.title))")
+        print("\(self.name) is moving from \(String(describing: self.piece.square?.title))")
+        piece.move(offset: value)
+        print("\(self.name) has moved to \(String(describing: self.piece.square?.title))")
     }
 }
