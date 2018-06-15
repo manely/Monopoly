@@ -33,6 +33,23 @@ class Game {
         self.numberOfRounds = numberOfRounds
     }
     
+    private func placePlayersOnGoSquare() {
+        // Put each playes piece on the Go square
+        // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!: To remove this dependency, we have to ask the player to place its square on the Go, which makes the `Player` to be dependent on `Board`. The design used in the 'Applying UML and Patterns' book makes `Player` dependent on `Board`, `Die`, and `Piece', but I prefer this design which the dependency is just between `Player` and `Piece`. The dependency of `Game` on `Square` used here is very light and there's no need to be worry on this.
+        for player in players {
+            player.piece.placeOn(square: board.goSquare)
+        }
+    }
+    
+    private func setUpPlayers() {
+        // Setup players and their pieces
+        for index in 1...numberOfPlayers {
+            players.append(Player(id: UInt8(index)))
+        }
+        
+        placePlayersOnGoSquare()
+    }
+    
     /// Sets up the game by initializing players, and the board. Player turns must be set after setting up the game.
     ///
     /// TODO: After creating players and setting up the board, each player must choose a piece and then roll the dice to determine the turns.
@@ -41,22 +58,7 @@ class Game {
         // Setup the board
         board.setUp()
         
-        // Setup players and their pieces
-        // TODO: Currently the player 1 has piece 1, player 2 has piece 2, and ... . This can later be changed to consider the player's choice.
-        for index in 1...numberOfPlayers {
-            players.append(Player(id: UInt8(index)))
-        }
-        
-        // Setting the players turn
-        // TODO: The following line just fills the players queue. It has nothing to do with determining the order of playing for each player.
-//        fillPlayersQueue()
-        
-        // Put each playes piece on the Go square
-        // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!
-        // FIXME: Instead of accessing special squares (such as GO) by index, it is better to define an enum for special squares.
-        for player in players {
-            player.piece.placeOn(square: board.square(at: 0))
-        }
+        setUpPlayers()
     }
     
     func play() {
