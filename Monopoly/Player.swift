@@ -20,6 +20,11 @@ class Player {
         }
     }
     
+    var netWorth: Int {
+        // TODO: Currently, there is no property and buying or selling process. So, the net worth of a player is its cash.
+        return self.cash
+    }
+    
     convenience init(id: UInt8) {
         self.init(id: id, name: "Player " + String(id))
     }

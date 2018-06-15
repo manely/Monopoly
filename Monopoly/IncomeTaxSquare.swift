@@ -13,7 +13,8 @@ class IncomeTaxSquare: Square {
     
     override func place(piece: Piece) {
         super.place(piece: piece)
-        let taxAmount = (piece.player?.cash)! > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : (piece.player?.cash)!
+        let playerNetWorth = (piece.player?.netWorth)!
+        let taxAmount = playerNetWorth > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : playerNetWorth
         piece.player?.cash -= taxAmount
     }
 }
