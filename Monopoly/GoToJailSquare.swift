@@ -10,8 +10,9 @@ import Foundation
 
 class GoToJailSquare: Square {
 
-    override func place(piece: Piece) {
-        super.place(piece: piece)
-        piece.placeOn(square: (self.board?.jailSquare)!)
+    override func place(player: Player) {
+        super.place(player: player)
+        // FIXME: Here we have some redundancy, as the player is first removed from its square and placed on GoToJail square, and again removed from GoToJail and placed on Jail square.
+        (self.board?.jailSquare)!.place(player: player)
     }
 }

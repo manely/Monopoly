@@ -9,11 +9,11 @@
 import Foundation
 
 /// Represents a player in the Monopoly game. 
-class Player {
+class Player: Equatable {
     static let initialCashValue = 1300 // Reducing 200 at the beginning, as the `Game` places this instance on the Go square and cash is increased to 1500, which is the desired initial cash value.
     let identifier: UInt8
     let name: String
-    var piece: Piece?
+    weak var square: Square?
     var cash: Int {
         didSet {
             print("The player \(identifier)'s cash is now: \(cash)")
@@ -33,12 +33,19 @@ class Player {
         self.identifier = id
         self.name = name
         self.cash = Player.initialCashValue
-        self.piece = Piece(id: id, name: name, player: self)
     }
     
     func takeTurn(moveOffset value: Int) {
-        print("\(self.name) is moving from \(String(describing: self.piece?.square?.title))")
-        piece?.move(offset: value)
-        print("\(self.name) has moved to \(String(describing: self.piece?.square?.title))")
+        print("\(self.name) is moving from \(String(describing: self.square?.title))")
+        if let source = self.square {
+            let destination = self.square?.board?.offset(square: source, by: value)
+            destination!.place(player: self)
+        }
+
+        print("\(self.name) has moved to \(String(describing: self.square?.title))")
+    }
+    
+    static func ==(lhs: Player, rhs: Player) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }

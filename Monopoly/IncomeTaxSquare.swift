@@ -11,10 +11,9 @@ import Foundation
 class IncomeTaxSquare: Square {
     static let amount = 200
     
-    override func place(piece: Piece) {
-        super.place(piece: piece)
-        let playerNetWorth = (piece.player?.netWorth)!
-        let taxAmount = playerNetWorth > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : playerNetWorth
-        piece.player?.cash -= taxAmount
+    override func place(player: Player) {
+        super.place(player: player)
+        let taxAmount = player.netWorth > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : player.netWorth
+        player.cash -= taxAmount
     }
 }

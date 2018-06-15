@@ -12,7 +12,7 @@ import Foundation
 class Square {
     var identifier: Int = 0
     weak var board: Board?
-    var pieces: [Piece?] = []
+    var players: [Player?] = []
     
     var title: String {
         return "Square " + String(self.identifier)
@@ -23,18 +23,19 @@ class Square {
         self.board = board
     }
     
-    func place(piece: Piece) {
-        assert(pieces.count < 8, "Square.place(piece:), can not add more than 8 pieces on a square.") // For the sake of defensive programming
-        self.pieces.append(piece)
-        piece.square = self 
+    func place(player: Player) {
+        assert(players.count < 8, "Square.place(piece:), can not add more than 8 pieces on a square.") // For the sake of defensive programming
+        player.square?.remove(player: player)
+        self.players.append(player)
+        player.square = self
     }
     
-    func remove(piece: Piece) {
-        let index = self.pieces.index(where: { $0 == piece })
-        assert(index != nil, "Square.remove(piece: \(piece), the piece is not on the current square.") // For the sake of defensive programming
+    func remove(player: Player) {
+        let index = self.players.index(where: { $0 == player })
+        assert(index != nil, "Square.remove(player: \(player), the player is not on the current square.") // For the sake of defensive programming
         if let index = index {
-            self.pieces.remove(at: index)
-            piece.square = nil
+            self.players.remove(at: index)
+            player.square = nil
         }
     }
 }

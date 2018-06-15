@@ -11,9 +11,9 @@ import Foundation
 class GoSquare: Square {
     static let playerSalary = 200
     
-    override func place(piece: Piece) {
-        super.place(piece: piece)
-        piece.player?.cash += GoSquare.playerSalary
+    override func place(player: Player) {
+        super.place(player: player)
+        player.cash += GoSquare.playerSalary
     }
     
 }
