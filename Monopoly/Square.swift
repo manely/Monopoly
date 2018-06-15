@@ -26,7 +26,7 @@ class Square {
     func place(piece: Piece) {
         assert(pieces.count < 8, "Square.place(piece:), can not add more than 8 pieces on a square.") // For the sake of defensive programming
         self.pieces.append(piece)
-        piece.square = self // Generally, this line is necessary; it is redundant when the move() message is sent to a piece.
+        piece.square = self 
     }
     
     func remove(piece: Piece) {

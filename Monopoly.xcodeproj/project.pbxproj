@@ -88,12 +88,12 @@
 				3C55B86A20C57D0700427D5E /* Player.swift */,
 				3C55B87220C586F600427D5E /* Piece.swift */,
 				3C55B86E20C57EF600427D5E /* Board.swift */,
+				3C55B87020C57F0200427D5E /* Square.swift */,
 				3CEADFB520D37F7D00B754AC /* JailSquare.swift */,
 				3C55B87620C6596900427D5E /* GoSquare.swift */,
 				3CEADFAF20D37AAD00B754AC /* IncomeTaxSquare.swift */,
 				3CEADFB120D37B5100B754AC /* GoToJailSquare.swift */,
 				3CEADFB320D37CAB00B754AC /* RegularSquare.swift */,
-				3C55B87020C57F0200427D5E /* Square.swift */,
 			);
 			path = Monopoly;
 			sourceTree = "<group>";
