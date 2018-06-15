@@ -33,21 +33,14 @@ class Game {
         self.numberOfRounds = numberOfRounds
     }
     
-    private func placePlayersOnGoSquare() {
-        // Put each playes piece on the Go square
-        // FIXME: This makes the `Game` dependent on `Square`, which is not good. Find a better solution!: To remove this dependency, we have to ask the player to place its square on the Go, which makes the `Player` to be dependent on `Board`. The design used in the 'Applying UML and Patterns' book makes `Player` dependent on `Board`, `Die`, and `Piece', but I prefer this design which the dependency is just between `Player` and `Piece`. The dependency of `Game` on `Square` used here is very light and there's no need to be worry on this.
-        for player in players {
-            player.piece.placeOn(square: board.goSquare)
-        }
-    }
-    
     private func setUpPlayers() {
         // Setup players and their pieces
         for index in 1...numberOfPlayers {
             players.append(Player(id: UInt8(index)))
         }
         
-        placePlayersOnGoSquare()
+        // Place players on the Go square
+        players.forEach { player in player.piece.placeOn(square: board.goSquare) }
     }
     
     /// Sets up the game by initializing players, and the board. Player turns must be set after setting up the game.
