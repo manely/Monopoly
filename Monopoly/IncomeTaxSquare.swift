@@ -9,10 +9,11 @@
 import Foundation
 
 class IncomeTaxSquare: Square {
-    static let amount = 100
+    static let amount = 200
     
     override func place(piece: Piece) {
         super.place(piece: piece)
-        piece.player?.cash -= IncomeTaxSquare.amount
+        let taxAmount = (piece.player?.cash)! > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : (piece.player?.cash)!
+        piece.player?.cash -= taxAmount
     }
 }
