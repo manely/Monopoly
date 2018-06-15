@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents a square and used to model the squares around the board game. 
+/// An abstract base class which epresents a square and used to model the squares around the board game. 
 class Square {
     var identifier: Int = 0
     weak var board: Board?

@@ -12,13 +12,28 @@ import Foundation
 class Board {
     private var squares = [Square]()
     
-    var goSquare: Square {
-        return self.square(at: 0)
+    var goSquare: GoSquare {
+        return self.square(at: 0) as! GoSquare
+    }
+    
+    var jailSquare: JailSquare {
+        return self.square(at: 10) as! JailSquare
     }
     
     func setUp() {
-        for index in 0...39 {
-            squares.append(Square(id: index, board: self))
+        squares.insert(GoSquare(id: 0, board: self), at: 0)
+        self.addRegularSquare(from: 1, to: 3)
+        squares.insert(IncomeTaxSquare(id: 4, board: self), at: 4)
+        self.addRegularSquare(from: 5, to: 9)
+        squares.insert(JailSquare(id: 10, board: self), at: 10)
+        self.addRegularSquare(from: 11, to: 29)
+        squares.insert(GoToJailSquare(id: 30, board: self), at: 30)
+        self.addRegularSquare(from: 31, to: 39)
+    }
+    
+    private func addRegularSquare(from: Int, to: Int) {
+        for index in from...to {
+            squares.append(RegularSquare(id: index, board: self))
         }
     }
     

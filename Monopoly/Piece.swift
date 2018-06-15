@@ -12,14 +12,12 @@ class Piece: Equatable {
     let identifier: UInt8
     let name: String
     weak var square: Square?
+    weak var player: Player?
     
-    convenience init(id: UInt8) {
-        self.init(id: id, name: "Piece " + String(id))
-    }
-    
-    init(id: UInt8, name: String) {
+    init(id: UInt8, name: String, player: Player) {
         self.identifier = id
         self.name = name
+        self.player = player
     }
     
     func move(offset offsetValue: Int) {
