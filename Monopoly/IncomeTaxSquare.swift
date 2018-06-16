@@ -9,11 +9,12 @@
 import Foundation
 
 class IncomeTaxSquare: Square {
-    static let amount = 200
+    static let threshold = 200
     
     override func place(player: Player) {
         super.place(player: player)
-        let taxAmount = player.netWorth > IncomeTaxSquare.amount ? IncomeTaxSquare.amount : player.netWorth
+        let tenPercentOfPlayerNetWorth = Float(player.netWorth) * 0.1
+        let taxAmount = player.netWorth > IncomeTaxSquare.threshold ? IncomeTaxSquare.threshold : Int(tenPercentOfPlayerNetWorth)
         player.cash -= taxAmount
     }
 }
