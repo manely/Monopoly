@@ -40,7 +40,7 @@ class Game {
         }
         
         // Place players on the Go square
-        players.forEach { player in board.goSquare.place(player: player) }
+        players.forEach { player in board.place(player: player, on: board.goSquare) }
     }
     
     /// Sets up the game by initializing players, and the board. Player turns must be set after setting up the game.

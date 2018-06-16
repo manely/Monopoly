@@ -37,11 +37,7 @@ class Player: Equatable {
     
     func takeTurn(moveOffset value: Int) {
         print("\(self.name) is moving from \(String(describing: self.square?.title))")
-        if let source = self.square {
-            let destination = self.square?.board?.offset(square: source, by: value)
-            destination!.place(player: self)
-        }
-
+        self.square?.board?.move(player: self, by: value)
         print("\(self.name) has moved to \(String(describing: self.square?.title))")
     }
     

@@ -10,6 +10,7 @@ import Foundation
 
 /// The Monopoly board which contains 40 squares, each represented by an instance of the `Square` class.
 class Board {
+    let totalNumberOfSquares = 40
     private var squares = [Square]()
     
     var goSquare: GoSquare {
@@ -42,19 +43,30 @@ class Board {
         return squares[index]
     }
     
-    func offset(square: inout Square, by offsetValue: Int) {
-        square = self.offset(square: square, by: offsetValue)
-    }
-    
     func offset(square: Square, by offsetValue: Int) -> Square {
         var newIndex = square.identifier + offsetValue
-        if newIndex >= 40 {
-            newIndex -= 40
+        if newIndex >= totalNumberOfSquares {
+            newIndex -= totalNumberOfSquares
         }
         if newIndex < 0 {
-            newIndex += 40
+            newIndex += totalNumberOfSquares
         }
         return squares[newIndex]
+    }
+    
+    /// Although this method adds `Player` visibility to `Board`, the dependency to the `Player` is very weak; it is just passed as a message argument to `Square`, and in fact, the dependency is more on the `Square`, which is natural for a board object to be dependent on squares.
+    /// The net result is removing the dependency of `Game` on `Square` in the `setUpPlayers()` method.
+    func place(player: Player, on square: Square) {
+        square.place(player: player)
+    }
+    
+    /// A player needs to ask the board of its square to compute the destination square and then, ask the destination square to place it, to take a turn.
+    /// By adding this method to the `Board` class, the dependency of `Player` on `Square` is removed; a player just asks the board to move it.
+    func move(player: Player, by offsetValue: Int) {
+        if let source = player.square {
+            let destination = self.offset(square: source, by: offsetValue)
+            destination.place(player: player)
+        }
     }
 }
 
